@@ -3,6 +3,10 @@ import csvParser from "csv-parser";
 import sensors from "../sensor-aggregation/sensor_data.json";
 
 const main = () => {
+  streamLog();
+};
+
+const streamLog = () => {
   let result: typeof sensors.array = [];
   fs.createReadStream("output.csv", { autoClose: false })
     .pipe(csvParser())
@@ -23,13 +27,10 @@ const main = () => {
         output[room] = mapAggregate(roomData);
       });
 
-      streamLog(output);
+      console.log(output);
     });
-};
 
-const streamLog = (output: any) => {
-  console.log(output);
-  setTimeout(() => streamLog(output), 15000);
+  setTimeout(() => streamLog(), 15000);
 };
 
 const mapAggregate = (data: typeof sensors.array) => ({

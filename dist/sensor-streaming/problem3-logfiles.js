@@ -6,6 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const csv_parser_1 = __importDefault(require("csv-parser"));
 const main = () => {
+    streamLog();
+};
+const streamLog = () => {
     let result = [];
     fs_1.default.createReadStream("output.csv", { autoClose: false })
         .pipe(csv_parser_1.default())
@@ -22,12 +25,9 @@ const main = () => {
             const roomData = result.filter((sensor) => sensor.roomArea === room);
             output[room] = mapAggregate(roomData);
         });
-        streamLog(output);
+        console.log(output);
     });
-};
-const streamLog = (output) => {
-    console.log(output);
-    setTimeout(() => streamLog(output), 15000);
+    setTimeout(() => streamLog(), 15000);
 };
 const mapAggregate = (data) => ({
     humidity: {
