@@ -1,0 +1,22 @@
+{
+  "name": "cad-it-assessment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "problem1": "node dist/salary-conversion/problem1.js",
+    "problem2": "node dist/sensor-aggregation/problem2.js",
+    "problem3-1": "cd dist/sensor-streaming && node problem3-streams.js",
+    "problem3-2": "cd dist/sensor-streaming && node problem3-logfiles.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "csv-parser": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.10"
+  }
+}
